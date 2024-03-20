@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import FakestoreApi from './Components/Fakestore/Fakestore';
+import LoginSignup from './Components/LoginSignup/LoginSignup';
+import Cart from './Components/Fakestore/Cart';
 
 function App() {
+  // Define your addToCart function here
+  const addToCart = (product) => {
+    // Implementation of addToCart function
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<LoginSignup />} />
+        {/* Make sure addToCart is defined before passing it as a prop */}
+        <Route path='/fakestore' element={<FakestoreApi addToCart={addToCart} />} />
+        <Route path='/cart' element={<Cart />} />
+      </Routes> 
+    </BrowserRouter>
   );
 }
 
